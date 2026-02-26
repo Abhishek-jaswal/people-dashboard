@@ -1,34 +1,36 @@
-import React, { useState } from 'react'
+import React from "react";
+// import Image from "next/image";
 import {
     Home,
     User,
     Users,
-
     Settings,
     UserPlus,
     Briefcase,
-    ChevronRight,
-
     UserCircle,
-
     ChartPie,
-} from 'lucide-react'
+} from "lucide-react";
 
+// Navigation items
 const navItems = [
-    { icon: Home, label: 'Home', id: 'home', active: true },
-    { icon: User, label: 'My Info', id: 'myinfo' },
-    { icon: Users, label: 'People', id: 'people' },
-    { icon: UserCircle, label: 'Team Management', id: 'team', },
-    { icon: Briefcase, label: 'Project Setup', id: 'projects' },
-    { icon: UserPlus, label: 'Hiring', id: 'hiring' },
-    { icon: ChartPie, label: 'Report', id: 'report' },
+    { icon: Home, label: "Home", id: "home" },
+    { icon: User, label: "My Info", id: "myinfo", badge: "›" },
+    { icon: Users, label: "People", id: "people" },
+    { icon: UserCircle, label: "Team Management", id: "team", badge: "›" },
+    { icon: Briefcase, label: "Project Setup", id: "projects", badge: "›" },
+    { icon: UserPlus, label: "Hiring", id: "hiring" },
+    { icon: ChartPie, label: "Report", id: "report" },
+];
 
-]
-
-export default function Sidebar({ activeItem, setActiveItem, mobileOpen, onClose }) {
+export default function Sidebar({
+    activeItem,
+    setActiveItem,
+    mobileOpen,
+    onClose,
+}) {
     return (
         <>
-            {/* Mobile overlay */}
+            {/* ====== MOBILE OVERLAY ====== */}
             {mobileOpen && (
                 <div
                     className="fixed inset-0 bg-black/40 z-20 lg:hidden"
@@ -36,149 +38,131 @@ export default function Sidebar({ activeItem, setActiveItem, mobileOpen, onClose
                 />
             )}
 
+            {/* ====== SIDEBAR WRAPPER ====== */}
             <aside
-                style={{
-                    width: '280px',
-                    minWidth: '280px',
-                    height: '992px',
-                    maxHeight: 'calc(100vh - 32px)',
-                    borderRadius: '20px',
-                    background: '#3D3936',
-                    position: 'sticky',
-                    top: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    overflow: 'hidden',
-                    zIndex: 30,
-                }}
                 className={`
-          transition-transform duration-300
-          ${mobileOpen ? 'translate-x-0' : ''}
-          max-lg:fixed max-lg:left-4 max-lg:top-4
-          ${!mobileOpen ? 'max-lg:-translate-x-[320px]' : 'max-lg:translate-x-0'}
+          fixed z-30
+          lg:static
+          transition-all duration-300
+          ${mobileOpen ? "translate-x-0" : "max-lg:-translate-x-[320px]"}
         `}
+                style={{
+                    width: "280px",
+                    minWidth: "280px",
+                    height: "992px",
+                    maxHeight: "calc(100vh - 32px)",
+                    background: "#3D3936",
+                    borderRadius: "20px",
+                    top: "16px",
+                    left: "16px",
+                    paddingTop: "10px",
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden",
+                }}
             >
-                {/* Logo / Brand */}
-                <div
-                    style={{
-                        padding: '10px',
-
-                    }}
-                >
-                    <p>hello   </p>
-
+                {/* ====== LOGO TOP ====== */}
+                <div style={{ paddingLeft: "20px", paddingBottom: "20px" }}>
+                    {/* <Image
+                        src="/logo.png"
+                        alt="Logo"
+                        width={95}
+                        height={40}
+                        style={{ objectFit: "contain" }}
+                    /> */}
+                    he
                 </div>
 
-                {/* Nav section */}
+                {/* ====== NAVIGATION LIST ====== */}
                 <div
                     style={{
-                        padding: '16px 24px',
+                        padding: "0 20px",
                         flex: 1,
-                        overflowY: 'auto',
+                        overflowY: "auto",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
                     }}
                 >
-                    {/* Section label */}
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = activeItem === item.id;
 
+                        return (
+                            <button
+                                key={item.id}
+                                onClick={() => {
+                                    setActiveItem(item.id);
+                                    if (onClose) onClose();
+                                }}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    width: "100%",
+                                    padding: "12px 16px",
+                                    gap: "12px",
+                                    borderRadius: "12px",
+                                    background: isActive ? "#FFF" : "transparent",
+                                    border: "none",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                {/* Left Icon */}
+                                <Icon
+                                    size={18}
+                                    color={
+                                        isActive ? "rgba(12,12,12,0.6)" : "rgba(255,255,255,0.5)"
+                                    }
+                                    strokeWidth={isActive ? 2 : 1.5}
+                                />
 
-                    {/* Nav items */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                        {navItems.map((item) => {
-                            const Icon = item.icon
-                            const isActive = (activeItem || 'home') === item.id
-                            return (
-                                <button
-                                    key={item.id}
-                                    onClick={() => {
-                                        setActiveItem(item.id)
-                                        if (onClose) onClose()
-                                    }}
-                                    className="sidebar-item"
+                                {/* Label */}
+                                <span
                                     style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '12px',
-                                        width: '100%',
-                                        padding: '12px 16px',
-                                        borderRadius: '12px',
-                                        border: 'none',
-                                        background: isActive ? 'rgba(255,255,255,0.15)' : 'transparent',
-                                        cursor: 'pointer',
-                                        textAlign: 'left',
-                                        position: 'relative',
+                                        flex: 1,
+                                        fontSize: "14px",
+                                        fontWeight: isActive ? 600 : 400,
+                                        color: isActive ? "rgba(12,12,12,0.6)" : "#ffffff80",
                                     }}
                                 >
-                                    <Icon
-                                        size={18}
-                                        color={isActive ? 'white' : 'rgba(255,255,255,0.5)'}
-                                        strokeWidth={isActive ? 2 : 1.5}
-                                    />
+                                    {item.label}
+                                </span>
+
+                                {/* Right Arrow (badge) */}
+                                {item.badge && (
                                     <span
                                         style={{
-                                            color: isActive ? 'white' : 'rgba(255,255,255,0.5)',
-                                            fontSize: '14px',
-                                            fontWeight: isActive ? 600 : 400,
-                                            flex: 1,
+                                            color: "#ffffff80",
+                                            fontSize: "12px",
+                                            fontWeight: "bold",
                                         }}
                                     >
-                                        {item.label}
+                                        {item.badge}
                                     </span>
-                                    {item.badge && (
-                                        <span
-                                            style={{
-                                                background: '#FFC83E',
-                                                color: '#3D3936',
-                                                fontSize: '10px',
-                                                fontWeight: 700,
-                                                borderRadius: '20px',
-                                                padding: '2px 7px',
-                                                minWidth: '20px',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            {item.badge}
-                                        </span>
-                                    )}
-                                    {isActive && (
-                                        <ChevronRight size={14} color="#FFFFFF" />
-                                    )}
-                                </button>
-                            )
-                        })}
-                    </div>
-
-
+                                )}
+                            </button>
+                        );
+                    })}
                 </div>
 
-                {/* Bottom user profile */}
+                {/* ====== SETTINGS SECTION (BOTTOM) ====== */}
                 <div
                     style={{
-                        padding: '10px 24px',
-                        margin: '16px',
-                        cursor: 'pointer',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderColor: '#FFFFFF1A',
-                        borderRadius: '16px',
+                        padding: "10px 20px",
+                        margin: "16px",
+                        borderRadius: "16px",
+                        border: "1px solid #FFFFFF1A",
                     }}
                 >
-                    <div className="flex items-center gap-3">
-
-
-                        <button
-                            style={{
-                                background: 'transparent',
-
-
-                                padding: '2px',
-                                borderRadius: '6px',
-                                color: 'rgba(255,255,255,0.4)',
-                                gap: '10px',
-                            }}
-                        >
-                            <Settings size={15} /> Settings
-                        </button>
-                    </div>
+                    <button
+                        className="flex items-center gap-3"
+                        style={{ color: "rgba(255,255,255,0.4)" }}
+                    >
+                        <Settings size={16} />
+                        <span>Settings</span>
+                    </button>
                 </div>
             </aside>
         </>
-    )
+    );
 }
