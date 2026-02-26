@@ -1,0 +1,18 @@
+export const employees = [
+    { id: 1, name: "Ethan Lee", role: "IT Specialist", dots: ["#FF6B35", "#FFD93D", "#6BCB77", "#4D96FF", "#C77DFF"] },
+    { id: 2, name: "Emily Baker", role: "Marketing Manager", dots: ["#FF6B35", "#FFD93D", "#4D96FF", "#C77DFF", "#FF6B6B"] },
+    { id: 3, name: "Micheal Shaun", role: "Sales Director", dots: ["#FF6B35", "#FFD93D", "#6BCB77", "#4D96FF"] },
+    { id: 4, name: "Liam Carter", role: "Product Designer", dots: ["#FFD93D", "#6BCB77", "#4D96FF", "#C77DFF"] },
+    { id: 5, name: "Grace Kim", role: "Customer Lead", dots: ["#FF6B35", "#FFD93D", "#6BCB77", "#4D96FF", "#C77DFF"] },
+    { id: 6, name: "Noah Williams", role: "Finance Head", dots: ["#FF6B35", "#FFD93D", "#6BCB77", "#C77DFF", "#FF6B6B"] },
+    { id: 7, name: "Isabella Rossi", role: "Operations Manager", dots: ["#FF6B35", "#FFD93D", "#6BCB77", "#4D96FF"] },
+    { id: 8, name: "Ava Thompson", role: "HR Executive", dots: ["#FFD93D", "#6BCB77", "#4D96FF", "#C77DFF"] },
+    { id: 9, name: "Marcus Bell", role: "DevOps Engineer", dots: ["#FF6B35", "#FFD93D", "#6BCB77"] },
+    { id: 10, name: "Sophie Lane", role: "Legal Counsel", dots: ["#FFD93D", "#6BCB77", "#4D96FF", "#FF6B6B"] },
+    { id: 11, name: "Priya Nair", role: "Data Analyst", dots: ["#FF6B35", "#6BCB77", "#C77DFF"] },
+    { id: 12, name: "James Ford", role: "UX Researcher", dots: ["#FF6B35", "#FFD93D", "#4D96FF", "#C77DFF"] },
+    { id: 13, name: "Lisa Chen", role: "Content Strategist", dots: ["#FF6B35", "#FFD93D", "#6BCB77"] },
+    { id: 14, name: "Ryan Patel", role: "Cloud Architect", dots: ["#4D96FF", "#C77DFF", "#FFD93D"] },
+    { id: 15, name: "Mia Jordan", role: "Brand Designer", dots: ["#FF6B35", "#6BCB77", "#4D96FF", "#C77DFF"] },
+    { id: 16, name: "Tom Harris", role: "Security Lead", dots: ["#FF6B6B", "#FFD93D", "#6BCB77"] },
+];
