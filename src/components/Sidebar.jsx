@@ -34,6 +34,7 @@ export default function Sidebar({ collapsed, onToggle, activeNav, onNavClick }) 
             </div>
 
             {/* Navigation */}
+            {/* // The navigation section renders a list of navigation items defined in the navItems array. Each item displays an icon and a label, and the appearance changes based on whether it is active or not. When the sidebar is collapsed, only the icons are shown, and the labels are hidden. The active navigation item is highlighted with a different background color and text color to indicate the current selection. Additionally, if a navigation item has an arrow property set to true, an arrow icon is displayed on the right side of the item when the sidebar is expanded. */}
             <nav style={{ flex: 1, padding: "10px 0", overflowY: "auto" }}>
                 {navItems.map(({ label, icon: Icon, arrow }) => {
                     const active = activeNav === label;
