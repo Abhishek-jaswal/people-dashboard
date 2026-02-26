@@ -1,122 +1,67 @@
-import React from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-export default function Pagination({ currentPage, totalPages, onPageChange, perPage, setPerPage, totalItems }) {
-    const pages = Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-        if (totalPages <= 5) return i + 1
-        if (currentPage <= 3) return i + 1
-        if (currentPage >= totalPages - 2) return totalPages - 4 + i
-        return currentPage - 2 + i
-    })
-
+/**
+ * Bottom pagination row:
+ * rows-per-page selector + page info + prev/next buttons.
+ */
+function Pagination() {
     return (
         <div
             style={{
-                height: '61px',
-                padding: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                borderTop: '1px solid #F0F0EF',
-                background: 'white',
-                borderRadius: '0 0 20px 20px',
-                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                flexWrap: "wrap",
+                marginTop: 24,
+                paddingTop: 16,
+                borderTop: "1px solid #f0ede8",
             }}
         >
-            {/* Left: per page + total */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '12px', color: '#9E9B98' }}>Show:</span>
-                    <select
-                        value={perPage}
-                        onChange={(e) => setPerPage(Number(e.target.value))}
-                        style={{
-                            border: '1px solid #E5E5E4',
-                            borderRadius: '8px',
-                            padding: '3px 8px',
-                            fontSize: '12px',
-                            color: '#3D3936',
-                            background: 'white',
-                            cursor: 'pointer',
-                            fontFamily: 'DM Sans, sans-serif',
-                            outline: 'none',
-                        }}
-                    >
-                        {[8, 12, 16, 24].map((n) => (
-                            <option key={n} value={n}>{n}</option>
-                        ))}
-                    </select>
-                    <span style={{ fontSize: '12px', color: '#9E9B98' }}>per page</span>
-                </div>
-                <span style={{ fontSize: '12px', color: '#B0ADA9' }}>
-                    {totalItems} total
-                </span>
-            </div>
+            <span style={{ fontSize: 12, color: "#9ca3af" }}>Rows per page:</span>
 
-            {/* Right: pagination controls */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => onPageChange(currentPage - 1)}
-                    style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '8px',
-                        border: '1px solid #E5E5E4',
-                        background: 'white',
-                        cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        opacity: currentPage === 1 ? 0.4 : 1,
-                        transition: 'all 0.15s ease',
-                    }}
-                >
-                    <ChevronLeft size={14} color="#3D3936" />
-                </button>
+            <select
+                style={{
+                    border: "1.5px solid #ede9e4",
+                    borderRadius: 7,
+                    padding: "5px 10px",
+                    fontSize: 12,
+                    color: "#374151",
+                    background: "#fafafa",
+                    fontFamily: "'DM Sans', sans-serif",
+                    cursor: "pointer",
+                    outline: "none",
+                }}
+            >
+                <option>100</option>
+                <option>50</option>
+                <option>25</option>
+            </select>
 
-                {pages.map((page) => (
+            <span style={{ fontSize: 12, color: "#9ca3af" }}>1–100 of 500</span>
+
+            <div style={{ display: "flex", gap: 4, marginLeft: "auto" }}>
+                {["‹", "›"].map((ch) => (
                     <button
-                        key={page}
-                        onClick={() => onPageChange(page)}
+                        key={ch}
                         style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '8px',
-                            border: page === currentPage ? 'none' : '1px solid #E5E5E4',
-                            background: page === currentPage ? '#3D3936' : 'white',
-                            color: page === currentPage ? 'white' : '#3D3936',
-                            fontSize: '12px',
-                            fontWeight: page === currentPage ? 600 : 400,
-                            cursor: 'pointer',
-                            transition: 'all 0.15s ease',
-                            fontFamily: 'DM Sans, sans-serif',
+                            width: 30,
+                            height: 30,
+                            borderRadius: 7,
+                            border: "1.5px solid #ede9e4",
+                            background: "#fafafa",
+                            fontSize: 15,
+                            cursor: "pointer",
+                            color: "#6b7280",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.15s",
                         }}
                     >
-                        {page}
+                        {ch}
                     </button>
                 ))}
-
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => onPageChange(currentPage + 1)}
-                    style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '8px',
-                        border: '1px solid #E5E5E4',
-                        background: 'white',
-                        cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        opacity: currentPage === totalPages ? 0.4 : 1,
-                        transition: 'all 0.15s ease',
-                    }}
-                >
-                    <ChevronRight size={14} color="#3D3936" />
-                </button>
             </div>
         </div>
-    )
+    );
 }
+
+export default Pagination;
