@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
+import MainContent from './components/MainContent'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [activeItem, setActiveItem] = useState('home')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [viewMode, setViewMode] = useState('grid')
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    /* Full viewport wrapper */
+    <div
+      style={{
+        minHeight: '100vh',
+        background: '#F7F7F7',
+        padding: '16px',
+        boxSizing: 'border-box',
+      }}
+    >
+      {/* Desktop layout: max-width 1440px centered */}
+      <div
+        style={{
+          maxWidth: '1408px',
+          margin: '0 auto',
+          display: 'flex',
+          gap: '16px',
+          alignItems: 'flex-start',
+          minHeight: 'calc(100vh - 32px)',
+        }}
+      >
+        {/* ─── SIDEBAR ─── */}
+        <Sidebar
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          mobileOpen={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+
+        {/* ─── RIGHT COLUMN ─── */}
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            minWidth: 0,
+            minHeight: 'calc(100vh - 32px)',
+          }}
+        >
+          {/* Navbar */}
+          <Navbar
+            onMenuToggle={() => setMobileMenuOpen(true)}
+            viewMode={viewMode}
+            setViewMode={setViewMode}
+          />
+
+          {/* Main panel */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+            <MainContent viewMode={viewMode} />
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
-
-export default App
