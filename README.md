@@ -1,4 +1,4 @@
-# CORE — Employee Directory Dashboard
+# CORE — People Dashboard
 
 A responsive employee directory and people management dashboard built with **React**, deployed on **Vercel**, and version-controlled via **GitHub**.
 
