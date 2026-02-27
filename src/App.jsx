@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, X, Download, Zap, Plus, Grid2X2, AlignJustify, ArrowUpDown, ChevronLeft } from "lucide-react";
+import { Search, X, Download, Zap, Plus, Grid2X2, AlignJustify, ArrowUpDown, ChevronRight } from "lucide-react";
 
 import TopBar from "./components/TopBar";
 import EmployeeCard from "./components/EmployeeCard";
@@ -246,7 +246,7 @@ export default function App() {
             <span style={{ fontSize: 12, color: "#9ca3af" }}>1–100 of 500</span>
 
             <div style={{ display: "flex", gap: 4, marginLeft: "auto" }}>
-              {[ChevronLeft, ChevronLeft].map((Icon, i) => (
+              {[ChevronRight, ChevronRight].map((Icon, i) => (
                 <button key={i} style={{
                   width: 30, height: 30, borderRadius: 7,
                   border: "1.5px solid #ede9e4",
