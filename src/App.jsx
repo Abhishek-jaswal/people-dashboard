@@ -167,7 +167,7 @@ export default function App() {
               flex: 1, minWidth: 160, background: "#FFFFFF",
               border: "1.5px solid #ede9e4", borderRadius: 14,
               display: "flex", alignItems: "center",
-              padding: "9px 13px", gap: 8,
+              padding: "9px ", gap: 8,
             }}>
               <Search size={14} color="#c4b8b0" />
               <input
@@ -189,7 +189,7 @@ export default function App() {
             <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
               {buttons.map(({ icon: Icon, tip, active }) => (
                 <button key={tip} title={tip} style={{
-                  width: 36, height: 36, borderRadius: 12,
+                  borderRadius: 16,
                   background: active ? "#3D3936" : "#fafafa",
                   border: "1.5px solid #ede9e4",
                   color: active ? "#fff" : "#6b7280",
