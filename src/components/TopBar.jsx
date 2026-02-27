@@ -1,4 +1,4 @@
-import { Clock, Bell, Menu } from "lucide-react";
+import { Clock, Bell, Menu, FileText } from "lucide-react";
 
 export default function TopBar({ time, isMobile, onMenuClick }) {
     const formatted = time.toTimeString().slice(0, 8);
@@ -42,7 +42,7 @@ export default function TopBar({ time, isMobile, onMenuClick }) {
                     <span style={{
                         fontSize: isMobile ? 11 : 12, fontWeight: 600,
                         color: "#374151", letterSpacing: 1,
-                    }}>{formatted}</span>
+                    }}>{formatted}</span><FileText size={20} color="#6b7280" />
                 </div>
 
                 {!isMobile && (

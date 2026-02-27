@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, X, Download, Zap, Plus, Grid2X2, AlignJustify, ArrowUpDown, ChevronLeft } from "lucide-react";
+import { Search, X, Download, Zap, Plus, Grid2X2, AlignJustify, ArrowUpDown, ChevronRight } from "lucide-react";
 
 import TopBar from "./components/TopBar";
 import EmployeeCard from "./components/EmployeeCard";
@@ -167,7 +167,7 @@ export default function App() {
               flex: 1, minWidth: 160, background: "#FFFFFF",
               border: "1.5px solid #ede9e4", borderRadius: 14,
               display: "flex", alignItems: "center",
-              padding: "9px 13px", gap: 8,
+              padding: "9px ", gap: 8,
             }}>
               <Search size={14} color="#c4b8b0" />
               <input
@@ -189,7 +189,7 @@ export default function App() {
             <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
               {buttons.map(({ icon: Icon, tip, active }) => (
                 <button key={tip} title={tip} style={{
-                  width: 36, height: 36, borderRadius: 12,
+                  borderRadius: 16,
                   background: active ? "#3D3936" : "#fafafa",
                   border: "1.5px solid #ede9e4",
                   color: active ? "#fff" : "#6b7280",
@@ -246,7 +246,7 @@ export default function App() {
             <span style={{ fontSize: 12, color: "#9ca3af" }}>1–100 of 500</span>
 
             <div style={{ display: "flex", gap: 4, marginLeft: "auto" }}>
-              {[ChevronLeft, ChevronLeft].map((Icon, i) => (
+              {[ChevronRight, ChevronRight].map((Icon, i) => (
                 <button key={i} style={{
                   width: 30, height: 30, borderRadius: 7,
                   border: "1.5px solid #ede9e4",

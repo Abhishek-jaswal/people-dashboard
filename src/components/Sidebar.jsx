@@ -1,4 +1,4 @@
-import { ChevronLeft, Settings } from "lucide-react";
+import { ChevronLeft, ChevronsLeft, Settings } from "lucide-react";
 import { navItems } from "../data/navItems";
 
 export default function Sidebar({ collapsed, onToggle, activeNav, onNavClick }) {
@@ -17,19 +17,18 @@ export default function Sidebar({ collapsed, onToggle, activeNav, onNavClick }) 
                 {!collapsed && (
                     <img src="/logo.png" alt="Logo" style={{ width: 100, height: 26 }} />
                 )}
-                <button onClick={onToggle} style={{
-                    background: "rgba(255,255,255,0.08)", border: "none", cursor: "pointer",
-                    width: 28, height: 28, borderRadius: 7,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                    <ChevronLeft
-                        size={13}
-                        color="#eaedf1"
+                <button onClick={onToggle} style={{ background: "transparent", border: "none", cursor: "pointer", padding: 10 }}>
+
+
+                    <ChevronsLeft
+                        size={20}
                         style={{
                             transform: collapsed ? "rotate(180deg)" : "rotate(0deg)",
                             transition: "transform 0.28s",
+                            color: "#FFFFFF",
                         }}
                     />
+
                 </button>
             </div>
 
